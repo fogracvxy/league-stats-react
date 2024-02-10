@@ -2,30 +2,27 @@ import React, { ChangeEvent } from "react";
 import { Box, Button, Flex, Input, Select } from "@chakra-ui/react";
 
 interface NavBarProps {
-  setRegionFetch: (url: string) => void;
+  setRegion: (region: string) => void;
   setSummonerName: (name: string) => void;
   summonerName: string;
   fetchSummonerData: () => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
-  setRegionFetch,
+  setRegion,
   setSummonerName,
   summonerName,
   fetchSummonerData,
 }) => {
   const handleRegionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const region = e.target.value;
-    // Construct the API URL using the selected region and summoner name
-    const url = `http://localhost:3001/api/summoner/${region}/${summonerName}`;
-    setRegionFetch(url);
+    setRegion(e.target.value);
   };
 
   const handleSummonerNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSummonerName(e.target.value);
   };
 
-  // Function to initiate the search when the search button is clicked
+  // No need to pass event since it's not used
   const handleSearchClick = () => {
     fetchSummonerData();
   };

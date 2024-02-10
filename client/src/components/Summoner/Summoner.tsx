@@ -5,6 +5,7 @@ interface SummonerProps {
 }
 
 const Summoner: React.FC<SummonerProps> = ({ summonerData }) => {
+  console.log(summonerData);
   return (
     <div>
       <Flex direction="row" alignItems="center" justifyContent="center">
